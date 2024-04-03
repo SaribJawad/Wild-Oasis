@@ -54,6 +54,7 @@ async function createBookings() {
   const allCabinIds = cabinsIds.map((cabin) => cabin.id);
 
   const finalBookings = bookings.map((booking) => {
+    console.log(booking.cabinId, "booking id");
     // Here relying on the order of cabins, as they don't have and ID yet
     const cabin = cabins.at(booking.cabinId - 1);
     const numNights = subtractDates(booking.endDate, booking.startDate);
@@ -114,7 +115,6 @@ function Uploader() {
     await createGuests();
     await createCabins();
     await createBookings();
-
     setIsLoading(false);
   }
 
