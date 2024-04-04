@@ -1,6 +1,6 @@
 import TableOperations from "../../ui/TableOperations";
 import Filter from "../../ui/Filter";
-import Sortby from "../../ui/Sortby";
+import SortBy from "../../ui/SortBy";
 
 export default function CabinTableOperations() {
   return (
@@ -13,7 +13,7 @@ export default function CabinTableOperations() {
           { value: "with-discount", label: "With discount" },
         ]}
       />
-      <Sortby
+      <SortBy
         options={[
           { value: "name-asc", label: "Sort by name (A-Z)" },
           { value: "name-desc", label: "Sort by name (Z-A)" },
