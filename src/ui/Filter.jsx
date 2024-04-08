@@ -42,6 +42,9 @@ export default function Filter({ filterField, options }) {
   function handleClick(value) {
     // first param = name of state/field in the URL
     searchParams.set(filterField, value);
+
+    if (searchParams.get("page")) searchParams.set("page", 1);
+
     setSearchParams(searchParams);
   }
   return (

@@ -18,7 +18,6 @@ function UpdateSettingsForm() {
 
   const { updateSetting, updatingStatus } = useUpdateSetting();
   const isUpdating = updatingStatus === "pending";
-  console.log(isUpdating);
   if (isLoading) return <Spinner />;
 
   function handleUpdate(e, field) {
