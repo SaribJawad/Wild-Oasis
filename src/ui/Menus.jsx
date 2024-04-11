@@ -87,6 +87,9 @@ function Toggle({ id }) {
   const { close, open, openId, setPosition } = useContext(MenusContext);
 
   function handleClick(e) {
+    // with this we can never travel up further and can therefore not be detected as a clickoutside
+    e.stopPropagation();
+
     // getBoundingClientRect gives us the position of the element
     const rect = e.target.closest("button").getBoundingClientRect();
     setPosition({
@@ -106,7 +109,9 @@ function Toggle({ id }) {
 
 function List({ id, children }) {
   const { openId, position, close } = useContext(MenusContext);
-  const ref = useOutsideClick(close);
+  const ref = useOutsideClick(() => {
+    close();
+  }, false);
 
   if (openId !== id) return null;
 

@@ -36,7 +36,6 @@ export async function login({ email, password }) {
 export async function getCurrentUser() {
   // checking the current active session (this data will come from the local Storage )
   const { data: session } = await supabase.auth.getSession();
-  console.log(session);
   if (!session.session) return null;
 
   const { data, error } = await supabase.auth.getUser();
@@ -73,7 +72,7 @@ export async function updateCurrentUser({ password, fullName, avatar }) {
 
   // 3- update avatar in the user
 
-  const { data: updatedUser, error: error2 } = supabase.auth.updateUser({
+  const { data: updatedUser, error: error2 } = await supabase.auth.updateUser({
     data: {
       avatar: `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`,
     },
